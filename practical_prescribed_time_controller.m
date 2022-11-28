@@ -206,7 +206,9 @@ nu=[nu1 nu2 nu3]';
 
 
 fai=norm(mu)^2  + norm(nu) * norm(nu);
-alpha=-800*z1 -  0.2* fai *  pinv(mu) * z1 +dxd;
+alpha=-500*z1 -  0.2* fai *  pinv(mu) * z1 +dxd;
+%fai=norm(mu)^2  + norm(nu) * norm(nu)+norm(mu)^2*norm(dxd)^2;
+%alpha=-800*z1 -  0.2* fai *  pinv(mu) * z1;
 
 
 z2=x_hat2 - alpha;

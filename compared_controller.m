@@ -133,8 +133,9 @@ kb1=0.2;kb2=5;
 %r2=[0 0 0]';
 z1=x_hat1-xd-r1;
 s1=rho*z1;
-sigma=drho/rho;
-alpha1=-500*z1-1*sigma*z1+dxd-1*r1-1*z1/(kb1*kb1-s1'*s1);
+%sigma=drho/rho;
+%alpha1=-500*z1-1*sigma*z1+dxd-1*r1-1*z1/(kb1*kb1-s1'*s1);
+alpha1=-500*z1-1*z1+dxd-1*r1-z1/(kb1*kb1-s1'*s1);
 
 z2=x_hat2-alpha1-r2;
 s2=rho*z2;
@@ -153,7 +154,7 @@ Ax=[faix1 faix2 faix3]';
 faix=1+norm(Ax,2)*norm(Ax,2);
 
 
-s_um=-1000*z2-ae(1)*faix/(kb2*kb2-s2'*s2)*rho^2*z2
+s_um=-100*z2-ae(1)*faix/(kb2*kb2-s2'*s2)*rho^2*z2
 dae=-0.1*ae(1)+2*faix/((kb2*kb2-s2'*s2)^2)*(rho^4)*(z2'*z2);
 %ux=-200*z2-kx1*ae(1)*faix*z2;
 

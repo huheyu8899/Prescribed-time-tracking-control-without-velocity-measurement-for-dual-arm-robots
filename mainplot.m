@@ -38,16 +38,18 @@ xlabel('Time(s)');
 ylabel( 'X axis (m)');
 %ylim([-0.2 0.75]);
 subplot(2,1,2)
-y1=plot(t1(1:5000),Xo2(1:5000,1)-Xd2(1:5000,1),'b');
-hold on; y2=plot(t1(1:5000),Fait2(1:5000,1),'--m');
-hold on; y3=plot(t1(1:5000),-Fait2(1:5000,1),'--m');
-legend([y1,y2],'Trajectory error in X-direction','The constrained boundary','Location','northeast');
+y1=plot(t1(1:5000),Xo1(1:5000,1)-Xd1(1:5000,1),'c');
+hold on; y2=plot(t2(1:5000),Xo2(1:5000,1)-Xd2(1:5000,1),'b');
+hold on; y3=plot(t1(1:5000),Fait2(1:5000,1),'--m');
+hold on; y4=plot(t1(1:5000),-Fait2(1:5000,1),'--m');
+legend([y1,y2,y4],'Trajectory error in X-direction with the controller in [17]','Trajectory error in X-direction with the proposed controller','The constrained boundary','Location','northeast');
 xlabel('Time(s)');
 ylabel( 'Trajectory error (m)');
 axes('position',[0.45 0.16 0.4 0.08]);
-y1=plot(t1(1:5000),Xo2(1:5000,1)-Xd2(1:5000,1),'b');
-hold on; y2=plot(t1(1:5000),Fait2(1:5000,1),'--m');
-hold on; y3=plot(t1(1:5000),-Fait2(1:5000,1),'--m');
+y1=plot(t1(1:5000),Xo1(1:5000,1)-Xd1(1:5000,1),'c');
+hold on; y2=plot(t2(1:5000),Xo2(1:5000,1)-Xd2(1:5000,1),'b');
+hold on; y3=plot(t1(1:5000),Fait2(1:5000,1),'--m');
+hold on; y4=plot(t1(1:5000),-Fait2(1:5000,1),'--m');
 xlim([2 5]);
 ylim([-0.01 0.01]);
 set(gca,'ytick',[-0.01 0 0.01],'yticklabel',{'-0.01','0','0.01'})
@@ -58,26 +60,28 @@ set(gca,'ytick',[-0.01 0 0.01],'yticklabel',{'-0.01','0','0.01'})
 %Y方向的轨迹
 figure(5)
 subplot(2,1,1)
-y1=plot(t2(1:5000),Xd2(1:5000,2),'k');
+y1=plot(t2(1:5000),Xd2(1:5000,2),'c');
 hold on; y2=plot(t2(1:5000),Xo2(1:5000,2),'b');
 hold on; y3=plot(t1(1:5000),Xo1(1:5000,2),'c');
 hold on; y4=plot(t2(1:5000),Xd2(1:5000,2)+AA,'--m');
 hold on; y5=plot(t2(1:5000),Xd2(1:5000,2)-AA,'--m');
-legend([y1,y2,y3,y4],'Desired trajectory','Actual trajectory with the controller in [17]','Actual trajectory with the proposed controller','The constrained boundary','Location','northeast');
+legend([y1,y2,y4],'Trajectory error in Y-direction with the controller in [17]','Trajectory error in Y-direction with the proposed controller','The constrained boundary','Location','northeast');
 xlabel('Time(s)');
 ylabel( 'Y axis(m)');
 %ylim([-1.1 1.8]);
 subplot(2,1,2)
-y1=plot(t1(1:5000),Xo2(1:5000,2)-Xd2(1:5000,2),'b');
-hold on; y2=plot(t1(1:5000),Fait2(1:5000,1),'--m');
-hold on; y3=plot(t1(1:5000),-Fait2(1:5000,1),'--m');
+y1=plot(t1(1:5000),Xo1(1:5000,2)-Xd1(1:5000,2),'c');
+hold on; y2=plot(t2(1:5000),Xo2(1:5000,2)-Xd2(1:5000,2),'b');
+hold on; y3=plot(t2(1:5000),Fait2(1:5000,1),'--m');
+hold on; y4=plot(t2(1:5000),-Fait2(1:5000,1),'--m');
 legend([y1,y2],'Trajectory error in Y-direction','The constrained boundary','Location','northeast');
 xlabel('Time(s)');
 ylabel( 'Trajectory error (m)');
 axes('position',[0.45 0.16 0.4 0.08]);
-y1=plot(t1(1:5000),Xo2(1:5000,2)-Xd2(1:5000,2),'b');
-hold on; y2=plot(t1(1:5000),Fait2(1:5000,1),'--m');
-hold on; y3=plot(t1(1:5000),-Fait2(1:5000,1),'--m');
+y1=plot(t1(1:5000),Xo1(1:5000,2)-Xd1(1:5000,2),'c');
+hold on; y2=plot(t2(1:5000),Xo2(1:5000,2)-Xd2(1:5000,2),'b');
+hold on; y3=plot(t2(1:5000),Fait2(1:5000,1),'--m');
+hold on; y4=plot(t2(1:5000),-Fait2(1:5000,1),'--m');
 xlim([2 5]);
 ylim([-0.01 0.01]);
 set(gca,'ytick',[-0.01 0 0.01],'yticklabel',{'-0.01','0','0.01'})
@@ -96,16 +100,18 @@ xlabel('Time(s)');
 ylabel( '\theta axis(rad)');
 %ylim([0 1]);
 subplot(2,1,2)
-y1=plot(t1(1:5000),Xo2(1:5000,3)-Xd2(1:5000,3),'b');
-hold on; y2=plot(t1(1:5000),Fait2(1:5000,1),'--m');
-hold on; y3=plot(t1(1:5000),-Fait2(1:5000,1),'--m');
-legend([y1,y2],'Trajectory error in \theta-direction','The constrained boundary','Location','northeast');
+y1=plot(t1(1:5000),Xo1(1:5000,3)-Xd1(1:5000,3),'c');
+hold on; y2=plot(t2(1:5000),Xo2(1:5000,3)-Xd2(1:5000,3),'b');
+hold on; y3=plot(t2(1:5000),Fait2(1:5000,1),'--m');
+hold on; y4=plot(t2(1:5000),-Fait2(1:5000,1),'--m');
+legend([y1,y2,y4],'Trajectory error in \theta-direction with the controller in [17]','Trajectory error in \theta-direction with the proposed controller','The constrained boundary','Location','northeast');
 xlabel('Time(s)');
 ylabel( 'Trajectory error (rad)' );
 axes('position',[0.45 0.16 0.4 0.08]);
-y1=plot(t1(1:5000),Xo2(1:5000,3)-Xd2(1:5000,3),'b');
-hold on; y2=plot(t1(1:5000),Fait2(1:5000,1),'--m');
-hold on; y3=plot(t1(1:5000),-Fait2(1:5000,1),'--m');
+y1=plot(t1(1:5000),Xo1(1:5000,3)-Xd1(1:5000,3),'c');
+hold on; y2=plot(t2(1:5000),Xo2(1:5000,3)-Xd2(1:5000,3),'b');
+hold on; y3=plot(t2(1:5000),Fait2(1:5000,1),'--m');
+hold on; y4=plot(t2(1:5000),-Fait2(1:5000,1),'--m');
 xlim([2 5]);
 ylim([-0.01 0.01]);
 set(gca,'ytick',[-0.01 0 0.01],'yticklabel',{'-0.01','0','0.01'})

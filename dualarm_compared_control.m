@@ -95,7 +95,8 @@ Qs1=[];Qs2=[];Tol=[];
 
    % deltau=[0 0 0]';
     dr1=r2-1*r1;
-    dr2=2*deltau-2*r2;
+    %dr2=2*deltau-2*r2;
+    dr2=0.95*deltau-2*r2;
 
     [tr1,xr1]=ode45(@odexr1,tspan,yr1);    %观测的位置
     r1 =xr1(3,1:3)';                          %观测的位置
