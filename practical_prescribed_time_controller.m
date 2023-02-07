@@ -225,11 +225,35 @@ kesix3=[xo(3) xd(3) dxd(3) x_hat2(3)]';
 faix3=exp(-(kesix3-c)'*(kesix3-c)/sigma^2);
 Ax=[faix1 faix2 faix3]';
 faix=1+norm(Ax,2)*norm(Ax,2);
-kx1=1;kx2=1;
+kx1=0.01;kx2=0.01;
 dae=-kx2*ae(1)+kx1*faix*norm(z2,2)*norm(z2,2)
 t
-ux=-100*z2-mu*z1;
-um=ux-kx1*ae(1)*faix*z2;
+ux=-100*z2-mu*z1-kx1*ae(1)*faix*z2;
+
+um=[0 0 0]';
+if ux(1) > 1000
+   um(1)=1000;
+elseif ux(1) < -1000
+   um(1)=-1000;
+else
+   um(1)=ux(1);
+end
+if ux(2) > 1000
+   um(2)=1000;
+elseif ux(2) < -1000
+   um(2)=-1000;
+else
+   um(2)=ux(2);
+end
+if ux(3) > 1000
+   um(3)=1000;
+elseif ux(3) < -1000
+   um(3)=-1000;
+else
+   um(3)=ux(3);
+end
+
+
 tol=Je'*pinv(Jo')*um+1*Je'*Fic;
 %计算Fi时采用通过Fic进行迂回的方法。直接把Fi引入改模块，编译时报错。
 ddxo=Mt\(tol-Ct*dxo-Gt-Je'*Fi);

@@ -7,7 +7,7 @@ dt=0.001;tstop=5;Tx=2;epsx=0.003;mo=1;
 [t2,Xd2,Xo2,FI2,Fait2,Vel2,dXo2,Ae2,Tol2]=dualarm_velocity_prescribed_time_control(dt,tstop,Tx,epsx,mo);
 
 %实验3，验证精度可变，与实验2相比，改变精度
-dt=0.001;tstop=5;Tx=2;epsx=0.03;mo=1;
+dt=0.001;tstop=10;Tx=2;epsx=0.03;mo=1;
 [t3,Xd3,Xo3,FI3,Fait3,Vel3,dXo3,Ae3,Tol3]=dualarm_velocity_prescribed_time_control(dt,tstop,Tx,epsx,mo);
 
 

@@ -160,27 +160,34 @@ dae=-0.1*ae(1)+2*faix/((kb2*kb2-s2'*s2)^2)*(rho^4)*(z2'*z2);
 
 %um=ux-kx1*ae(1)*faix*z2;
 um=[0 0 0]';
-if abs(s_um(1)) < 100000
+if s_um(1) < -1000
+   um(1)=-1000;
+elseif s_um(1) > 1000
+   um(1)=1000;
+else
    um(1)=s_um(1);
-else
-   um(1)=100000;
 end
 
-if abs(s_um(2)) < 100000
+if s_um(2) < -1000
+   um(2)=-1000;
+elseif s_um(2) > 1000
+   um(2)=1000;
+else
    um(2)=s_um(2);
-else
-   um(2)=100000;
 end
 
-if abs(s_um(3)) < 100000
-   um(3)=s_um(3);
+if s_um(3) < -1000
+   um(3)=-1000;
+elseif s_um(3) > 1000
+   um(3)=1000;
 else
-   um(3)=100000;
+   um(3)=s_um(3);
 end
+
 
 deltau=um-s_um;
 
-tol=Je'*pinv(Jo')*um+0*Je'*Fic;
+tol=Je'*pinv(Jo')*um+1*Je'*Fic;
 %计算Fi时采用通过Fic进行迂回的方法。直接把Fi引入改模块，编译时报错。
 ddxo=Mt\(tol-Ct*dxo-Gt-Je'*Fi);
 Fe1=pinv(Je1')*(tol(1:3)-D1*ddq1-C1*dq1-G1);

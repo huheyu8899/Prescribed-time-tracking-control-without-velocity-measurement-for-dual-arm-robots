@@ -61,7 +61,7 @@ for i=0:1:tnum
     dxd=[0.5*0.5*pi*cos(0.5*pi*ts);-0.8*0.5*pi*sin(0.5*pi*ts);0.5*0.5*pi*cos(0.5*pi*ts)];
     
     %内力控制项
-    Fic=Fd+0.01*(Fd-Fi);
+    Fic=Fd+0.005*(Fd-Fi);
 
     %计算关节速度与加速度
     dq1=(q1-q1_t)/dt;
